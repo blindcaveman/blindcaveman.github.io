@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>MindMap-FaultTree-Unhappiness</title>
+<style type="text/css">
+    body {}
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<p>MindMap-FaultTree-Unhappiness</span>
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+2. The lust of the eyes</span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><p>after unlawful objects</span>
+<p>may design unchaste [immoral] and lascivious [driven by lust] looks</span>
+<p>eyes full of adultery, and whereby adultery is committed</span>
+<p>may intend a sinful curiosity of seeing vain sights, and shows, with which the eye of man is never satisfied</span>
+<p>the sin of covetousness</span>
+<p>the objects of which are visible things gold, silver, houses,lands, possessions</span>
+<p>which sin is drawn forth and cherished by the eyes</span>
+<p>indeed a covetous man has little more satisfaction than the beholding his substance with his eyes</span>
+<p>which he takes much sinful pleasure</span>
+<p><span id="show1_1_1" class="foldclosed" onClick="show_folder('1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1" class="foldopened" onClick="hide_folder('1_1_1')">-</span>
+Failure Effect: Going after vain and empty things</span>
+<ul id="fold1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>going after vain and empty things</span>
+
+</li>
+<li>looking</span>
+
+</li>
+<li>being in the wrong place</span>
+
+</li>
+<li><span id="show1_1_1_1" class="foldclosed" onClick="show_folder('1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1" class="foldopened" onClick="hide_folder('1_1_1_1')">-</span>
+doing something you are not suppose to do</span>
+<ul id="fold1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>broken relationship</span>
+
+</li>
+<li>health problems</span>
+
+</li>
+<li>complicated relationship</span>
+
+</li>
+<li>loss of opportunities</span>
+
+</li>
+<li>loss of job</span>
+
+</li>
+<li>loss of friends</span>
+
+</li>
+<li>loss of spouse</span>
+
+</li>
+<li><span id="show1_1_1_1_1" class="foldclosed" onClick="show_folder('1_1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1_1" class="foldopened" onClick="hide_folder('1_1_1_1_1')">-</span>
+eyes of men are never satisfied</span>
+<ul id="fold1_1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_1_1_1_1" class="foldclosed" onClick="show_folder('1_1_1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1_1_1" class="foldopened" onClick="hide_folder('1_1_1_1_1_1')">-</span>
+unsatisfied</span>
+<ul id="fold1_1_1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>unhappiness</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul></li>
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+3. The pride of life</span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li>ambition of honor,</span>
+
+</li>
+<li>ambition of places</span>
+
+</li>
+<li>ambition of high titles, as in the Scribes and Pharisees</span>
+
+</li>
+<li>ambition of grand living</span>
+
+</li>
+<li>living in a luxurious and pompous manner [Puffed up with vanity]</span>
+
+</li>
+<li>in rich diet</span>
+
+</li>
+<li>costly apparel</span>
+
+</li>
+<li>having fine seats</span>
+
+</li>
+<li>having palaces and stately buildings</span>
+
+</li>
+<li>craving for numerous attendance [LAM Syndrome, look at me]</span>
+
+</li>
+<li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
+Failure Effect: Going after pride</span>
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li>produces vanity and vexation of spirit</span>
+
+</li>
+<li>waste resources</span>
+
+</li>
+<li>waste effort</span>
+
+</li>
+<li>waste time</span>
+
+</li>
+<li>missed opportunities</span>
+
+</li>
+<li>lost opportunities</span>
+
+</li>
+<li><span id="show1_2_1_1" class="foldclosed" onClick="show_folder('1_2_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1" class="foldopened" onClick="hide_folder('1_2_1_1')">-</span>
+encounter many difficulties in the process</span>
+<ul id="fold1_2_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1_1_1" class="foldclosed" onClick="show_folder('1_2_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1_1" class="foldopened" onClick="hide_folder('1_2_1_1_1')">-</span>
+unable to obtain wants</span>
+<ul id="fold1_2_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1_1_1_1" class="foldclosed" onClick="show_folder('1_2_1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1_1_1_1" class="foldopened" onClick="hide_folder('1_2_1_1_1_1')">-</span>
+unsatisfied</span>
+<ul id="fold1_2_1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>unhappiness</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+1. The lust of the flesh</span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li>the corruption of nature</span>
+
+</li>
+<li>the fountain of all sin</span>
+
+</li>
+<li>indwelling sin, the flesh</span>
+
+</li>
+<li>corrupt principle which lusts against the Spirit</span>
+
+</li>
+<li>various lusts of the flesh, fleshly lusts, which war against the soul</span>
+
+</li>
+<li>also called worldly lusts</span>
+
+</li>
+<li>a lust of the body</span>
+
+</li>
+<li>the lust of uncleanness</span>
+
+</li>
+<li>all unchaste/immoral desires</span>
+
+</li>
+<li>promiscuous thoughts</span>
+
+</li>
+<li>impure words</span>
+
+</li>
+<li>unethical actions</span>
+
+</li>
+<li>fornication</span>
+
+</li>
+<li>adultery</span>
+
+</li>
+<li>rape</span>
+
+</li>
+<li>incest</span>
+
+</li>
+<li>sodomy</span>
+
+</li>
+<li>all unnatural lusts</span>
+
+</li>
+<li>unnecessary eating</span>
+
+</li>
+<li>drinking</span>
+
+</li>
+<li>gluttony</span>
+
+</li>
+<li>drunkennes</span>
+
+</li>
+<li>excess of wine</span>
+
+</li>
+<li>Indulge (one's appetite) to satiety</span>
+
+</li>
+<li>rioting-state of disorder involving group violence</span>
+
+</li>
+<li>reveling-celebrate noisily, often indulging in drinking</span>
+
+</li>
+<li>engage in uproarious festivities</span>
+
+</li>
+<li>all the sensual pleasures of life</span>
+
+</li>
+<li>gratification of the carnal mind and the lusts of it</span>
+
+</li>
+<li><span id="show1_3_1" class="foldclosed" onClick="show_folder('1_3_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1" class="foldopened" onClick="hide_folder('1_3_1')">-</span>
+Failure Effect: Going after the flesh</span>
+<ul id="fold1_3_1" style="POSITION: relative; VISIBILITY: visible;"><li>being in the wrong place</span>
+
+</li>
+<li>drawn to sin/temptations</span>
+
+</li>
+<li>the body is dishonored</span>
+
+</li>
+<li>sickness/disease</span>
+
+</li>
+<li>mental anguish</span>
+
+</li>
+<li>soul is destroyed</span>
+
+</li>
+<li><span id="show1_3_1_1" class="foldclosed" onClick="show_folder('1_3_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1_1" class="foldopened" onClick="hide_folder('1_3_1_1')">-</span>
+doing something you are not suppose to do</span>
+<ul id="fold1_3_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>broken relationship</span>
+
+</li>
+<li>health problems</span>
+
+</li>
+<li>complicated relationship</span>
+
+</li>
+<li>loss of opportunities</span>
+
+</li>
+<li>loss of job</span>
+
+</li>
+<li>loss of friends</span>
+
+</li>
+<li>loss of spouse</span>
+
+</li>
+<li><span id="show1_3_1_1_1" class="foldclosed" onClick="show_folder('1_3_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1_1_1" class="foldopened" onClick="hide_folder('1_3_1_1_1')">-</span>
+wound, dishonor and reproach brought on the character</span>
+<ul id="fold1_3_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_1_1_1_1" class="foldclosed" onClick="show_folder('1_3_1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1_1_1_1" class="foldopened" onClick="hide_folder('1_3_1_1_1_1')">-</span>
+unsatisfied</span>
+<ul id="fold1_3_1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>unhappiness</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>
