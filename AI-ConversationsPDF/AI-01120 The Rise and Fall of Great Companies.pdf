@@ -1,0 +1,684 @@
+<html><head><title>AI-01120 The Rise and Fall of Great Companies</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body class="pdf en-US" lang="en-US"><article id="57a88bef-cad3-4ffa-a2e6-b769be0bcdfe" class="page sans"><header><h1 class="page-title">AI-01120 The Rise and Fall of Great Companies</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Owner</th><td><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">R</span></span>Rigel Arcayan</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-blue">Investing </span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created time</th><td><time>@September 1, 2024 10:01 PM</time></td></tr></tbody></table></header><div class="page-body"><p id="cd69e2dd-fe5c-4b6d-98d4-8f7d159ea2d3" class=""><strong>In the context of stock market, &quot;when a rising company goes all the way to the moon, it is only a matter of time that it will eventually revert to the mean and sometimes crumbles&quot;.  Is there a truth to this observations?  How many companies in the US had a great beginnings and 5-10 years, all is history.  List 20 companies.</strong></p><p id="84ffdb2a-cc95-4f2e-b104-491eaf60a746" class="">It&#x27;s true that many companies experience rapid growth followed by a decline. This phenomenon is often attributed to factors like:</p><ul id="9f52539f-daf8-43c1-bfdd-03d8ed428209" class="bulleted-list"><li style="list-style-type:disc"><strong>Overvaluation:</strong> When a company&#x27;s stock price rises significantly faster than its underlying fundamentals, it becomes overvalued. This creates a bubble that is eventually bound to burst, leading to a sharp decline in price.</li></ul><ul id="0f0e0e7f-a61c-43c9-b0a5-f518fe2b6b6e" class="bulleted-list"><li style="list-style-type:disc"><strong>Competition:</strong> As a company grows, it attracts more competition, which can erode its market share and profitability.</li></ul><ul id="4a5bd58a-9d0e-481c-bdc9-09db07bd125d" class="bulleted-list"><li style="list-style-type:disc"><strong>Economic downturns:</strong> Recessions and other economic downturns can have a devastating impact on even the most successful companies.</li></ul><ul id="2c8cd783-7e40-4e11-a65c-1170696b75f8" class="bulleted-list"><li style="list-style-type:disc"><strong>Poor management:</strong> Incompetent or unethical management can lead to a company&#x27;s downfall.</li></ul><p id="551d074b-53c0-4254-ab5b-b2766c4dde02" class="">Here are 20 examples of US companies that had great beginnings but eventually declined:</p><ol type="1" id="98939d3b-a004-43de-a5e0-5b6e8d99c914" class="numbered-list" start="1"><li>Enron</li></ol><ol type="1" id="44353c65-f189-4780-ac92-6a4aa3313ab6" class="numbered-list" start="2"><li>WorldCom</li></ol><ol type="1" id="4e7ab1bb-97fe-45e1-8745-3b1a03d83878" class="numbered-list" start="3"><li>Tyco International</li></ol><ol type="1" id="f20c6d53-9bb7-43ab-8146-9c7912015326" class="numbered-list" start="4"><li>Adelphia Communications</li></ol><ol type="1" id="8caec24c-79c4-4720-b165-509a08d86f06" class="numbered-list" start="5"><li>Arthur Andersen</li></ol><ol type="1" id="f5b3735c-14bd-4338-ba4c-5b7612606f9f" class="numbered-list" start="6"><li>Lehman Brothers</li></ol><ol type="1" id="325c02be-c04b-4a1e-a8ec-01a37776a7cf" class="numbered-list" start="7"><li>Bear Stearns</li></ol><ol type="1" id="5f47ce90-d7e8-459f-addf-7db5393ac6c5" class="numbered-list" start="8"><li>AIG</li></ol><ol type="1" id="9a79c5f1-ff34-4dc6-b055-156f65937160" class="numbered-list" start="9"><li>Fannie Mae</li></ol><ol type="1" id="c13ba1d4-87de-430d-839d-311d633e82dd" class="numbered-list" start="10"><li>Freddie Mac</li></ol><ol type="1" id="43d817a1-3b86-4f62-b361-ffcaf10e35d6" class="numbered-list" start="11"><li>Blockbuster</li></ol><ol type="1" id="94953e92-8d10-4c8c-83d6-d13d30193d46" class="numbered-list" start="12"><li>Kodak</li></ol><ol type="1" id="9b6cede7-9517-4d3e-841c-1461b844da10" class="numbered-list" start="13"><li>Borders Group</li></ol><ol type="1" id="f4bb8499-219f-429f-812c-c505bf391405" class="numbered-list" start="14"><li>Circuit City</li></ol><ol type="1" id="5189a4b1-2fdb-4522-9fcf-7526df40bb94" class="numbered-list" start="15"><li>Toys &quot;R&quot; Us</li></ol><ol type="1" id="7a1c6f9b-c2a8-4ef2-aa21-69d7c745a4aa" class="numbered-list" start="16"><li>Sears</li></ol><ol type="1" id="7e412907-adcf-46a1-82c1-37122fc7598a" class="numbered-list" start="17"><li>JCPenney</li></ol><ol type="1" id="bf05c0b7-ea3b-4739-a10e-7e44b35019fe" class="numbered-list" start="18"><li>RadioShack</li></ol><ol type="1" id="e8d0c39b-3630-4ce2-9583-86f197cec7c8" class="numbered-list" start="19"><li>Pan Am</li></ol><ol type="1" id="a1c05c96-cd66-43d8-b7ab-60b1e7ac8073" class="numbered-list" start="20"><li>TWA</li></ol><p id="2cb5378f-8adf-4895-85e0-9b1be4c9c21f" class="">It&#x27;s important to note that not all companies that experience rapid growth will eventually decline. Some companies are able to sustain their growth and become long-term success stories. However, the risk of a decline is always present, especially for companies that are highly valued relative to their fundamentals.</p><p id="99ded8b5-512c-482f-a675-380bf80403bf" class="">List 20 possible causes.</p><p id="7417e22d-77eb-4d7a-a16f-3dbfd12f84f2" class=""><strong>20 Possible Causes of a Company&#x27;s Fall</strong><br/>1. <br/><strong>Overvaluation:</strong> When a company&#x27;s stock price is significantly higher than its intrinsic value.<br/>2. <br/><strong>Poor Management:</strong> Ineffective or unethical leadership can lead to operational inefficiencies and financial mismanagement.<br/>3. <br/><strong>Competitive Pressure:</strong> Increased competition can erode market share and profitability.<br/>4. <br/><strong>Economic Downturns:</strong> Recessions or other economic downturns can reduce consumer spending and demand for a company&#x27;s products or services.<br/>5. <br/><strong>Technological Disruption:</strong> New technologies can render existing products or business models obsolete.<br/>6. <br/><strong>Regulatory Changes:</strong> Changes in government regulations can negatively impact a company&#x27;s operations or profitability.<br/>7. <br/><strong>Financial Mismanagement:</strong> Poor financial practices, such as excessive debt or inadequate cash flow management, can lead to financial instability.<br/>8. <br/><strong>Product Failures:</strong> Failed product launches or poor product quality can damage a company&#x27;s reputation and sales.<br/>9. <br/><strong>Supply Chain Issues:</strong> Disruptions in the supply chain, such as shortages of raw materials or logistics problems, can impact production and sales.<br/>10. <br/><strong>Legal Troubles:</strong> Lawsuits, investigations, or regulatory scrutiny can damage a company&#x27;s reputation and financial performance.<br/>11. <br/><strong>Ethical Scandals:</strong> Corporate scandals involving unethical or illegal behavior can tarnish a company&#x27;s brand and lead to customer loss.<br/>12. <br/><strong>Mergers and Acquisitions:</strong> Failed mergers or acquisitions can lead to integration challenges, operational inefficiencies, and financial losses.<br/>13. <br/><strong>Cybersecurity Breaches:</strong> Data breaches or cyberattacks can damage a company&#x27;s reputation, lead to financial losses, and disrupt operations.<br/>14. <br/><strong>Natural Disasters:</strong> Natural disasters can disrupt operations, damage property, and lead to financial losses.<br/>15. <br/><strong>Labor Disputes:</strong> Strikes or labor unrest can disrupt production and damage a company&#x27;s reputation.<br/>16. <br/><strong>Demographic Changes:</strong> Changes in population demographics can impact consumer demand for a company&#x27;s products or services.<br/>17. <br/><strong>Globalization Challenges:</strong> Increased competition from foreign companies or economic instability in other countries can negatively impact a company&#x27;s performance.<br/>18. <br/><strong>Corporate Culture Issues:</strong> A toxic or negative corporate culture can lead to low employee morale, high turnover, and decreased productivity.<br/>19. <br/><strong>Loss of Key Talent:</strong> The departure of key employees or executives can disrupt operations and damage a company&#x27;s performance.<br/>20. <br/><strong>Unexpected Events:</strong> Unforeseen events, such as pandemics or geopolitical crises, can have a significant impact on a company&#x27;s business.</p><p id="23dac959-5069-4fdb-997b-a8eacf8409b7" class=""><strong>In 2024, look back 5 years and list 20 companies with a meteoric rise then the decline.</strong></p><h2 id="05529909-725a-4267-8709-2194f4a65b83" class=""><strong>A Challenge in Predicting the Future</strong></h2><p id="c3c030fa-a766-42e0-9ee7-1e41b2475dfb" class=""><strong>Unfortunately, I cannot provide a list of companies that have experienced a meteoric rise and subsequent decline in 2024.</strong> This is because we are currently in 2024, and it would require predicting future events that have not yet occurred.</p><p id="4b7bb96b-309b-4582-a3be-603f11461156" class=""><strong>However, I can provide you with some recent examples of companies that have experienced rapid growth followed by a decline:</strong></p><h3 id="1418ab69-9b54-4793-9a55-ee562454cff8" class=""><strong>Recent Examples (As of 2023)</strong></h3><ol type="1" id="5835d566-5a14-4a9f-8c4a-bd9f8a70538b" class="numbered-list" start="1"><li><strong>Peloton:</strong> The pandemic-fueled fitness craze boosted Peloton&#x27;s stock price significantly. However, as gyms reopened and competition intensified, the company&#x27;s stock price declined.</li></ol><ol type="1" id="6dcfb85c-6d96-4723-bbfc-a996eb0a1d01" class="numbered-list" start="2"><li><strong>Rivian:</strong> The electric vehicle startup experienced a meteoric rise in its stock price after going public. However, production delays, supply chain issues, and rising interest rates contributed to a decline in its valuation.</li></ol><ol type="1" id="5091412d-25d1-481d-8232-de661df39fbb" class="numbered-list" start="3"><li><strong>Coinbase:</strong> The cryptocurrency exchange saw a surge in popularity during the crypto boom. However, the market crash and regulatory scrutiny led to a significant drop in its stock price.</li></ol><ol type="1" id="2319f63c-938b-4a14-bdd6-589aaedb33e5" class="numbered-list" start="4"><li><strong>GameStop:</strong> The &quot;meme stock&quot; phenomenon propelled GameStop&#x27;s stock price to unprecedented heights. However, the frenzy eventually subsided, and the stock price returned to more realistic levels.</li></ol><ol type="1" id="4188dc0b-ef7b-4522-b06e-79ebfa108950" class="numbered-list" start="5"><li><strong>Lucid Group:</strong> The electric vehicle manufacturer experienced a rapid rise in its stock price following a successful IPO. However, production challenges and competition from established automakers contributed to a decline in its valuation.</li></ol><p id="20079c4f-9c5a-4aa2-80a0-5053a2d0bdcf" class=""><strong>To get a more accurate and up-to-date list of companies that have experienced a meteoric rise and subsequent decline in 2024, I recommend:</strong></p><ul id="2a5f47db-bb71-4c5b-a0be-ef39dcd52329" class="bulleted-list"><li style="list-style-type:disc"><strong>Checking financial news outlets:</strong> Websites like Bloomberg, Reuters, and The Wall Street Journal often cover such stories.</li></ul><ul id="28ab4798-075f-4d31-bb27-8d5d1431de7d" class="bulleted-list"><li style="list-style-type:disc"><strong>Using stock market analysis tools:</strong> Platforms like Google Finance or Yahoo Finance allow you to track stock performance over time.</li></ul><ul id="81cb905c-ffff-4fb1-9206-474a1fcffe03" class="bulleted-list"><li style="list-style-type:disc"><strong>Consulting with financial experts:</strong> Investment advisors or analysts can provide insights into recent market trends and company performance.</li></ul><p id="36dda0ce-6f5a-42b8-8a40-fa7a2ddeaaa9" class="">Please let me know if you have any other questions.</p></div></article></body></html>
